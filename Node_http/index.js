@@ -10,12 +10,13 @@ const server = http.createServer((req, res) => {
   
     if (req.method == 'GET') {
       var fileUrl;
-      if (req.url == '/') fileUrl = '/index.html';
+      if (req.url == '/') fileUrl = '/aboutus.html';
       else fileUrl = req.url;
   
       var filePath = path.resolve('./public'+fileUrl);
       const fileExt = path.extname(filePath);
-      if (fileExt == '.html') {
+      console.log(fileExt);
+      if (fileExt == '.html' || fileExt == '.PNG') {
         fs.exists(filePath, (exists) => {
           if (!exists) {
             res.statusCode = 404;
